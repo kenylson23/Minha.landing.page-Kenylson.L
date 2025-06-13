@@ -1,5 +1,6 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { AnimatedCounter } from '@/components/ui/scroll-trigger-animations';
 
 export function SkillsSection() {
   const ref = useRef(null);
@@ -98,7 +99,12 @@ export function SkillsSection() {
                   <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-gray-400 text-sm">{skill.name}</span>
-                      <span className="text-primary font-mono text-sm">{skill.level}%</span>
+                      <AnimatedCounter 
+                        from={0} 
+                        to={skill.level} 
+                        className="text-primary font-mono text-sm"
+                      />
+                      <span className="text-primary font-mono text-sm ml-1">%</span>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <motion.div

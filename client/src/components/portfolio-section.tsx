@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ShoppingCart, BarChart3, Smartphone, Bitcoin, Bot, Gamepad2, ExternalLink } from 'lucide-react';
+import { BounceInOnScroll, SlideRotateOnScroll, FlipOnScroll, ParallaxElement } from '@/components/ui/scroll-trigger-animations';
 
 export function PortfolioSection() {
   const projects = [
@@ -69,11 +70,33 @@ export function PortfolioSection() {
             <motion.div
               key={index}
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-primary/20 hover:border-primary/60 transition-all duration-500 cursor-magnetic"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
+              initial={{ 
+                opacity: 0, 
+                y: 60,
+                scale: 0.9,
+                rotateY: index % 2 === 0 ? -15 : 15
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                scale: 1,
+                rotateY: 0
+              }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.2,
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
+              whileHover={{ 
+                scale: 1.05, 
+                y: -15,
+                rotateX: 5,
+                rotateY: index % 2 === 0 ? 5 : -5,
+                boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)"
+              }}
             >
               {/* Project showcase */}
               <div className="aspect-video bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
