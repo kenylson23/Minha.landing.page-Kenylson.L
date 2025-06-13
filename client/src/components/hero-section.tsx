@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { ScrollReveal, Parallax } from '@/components/ui/scroll-animations';
+import { MagneticScroll, ScrollGlitch, TextReveal } from '@/components/ui/advanced-scroll-effects';
 
 export function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -13,45 +15,53 @@ export function HeroSection() {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-gray-800" />
       
-      {/* Floating geometric shapes */}
-      <motion.div
-        className="absolute top-20 left-10 w-20 h-20 border-2 border-primary/30 rotate-45"
-        animate={{ 
-          y: [0, -20, 0],
-          rotate: [45, 90, 45]
-        }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-      />
-      <motion.div
-        className="absolute bottom-32 right-16 w-16 h-16 bg-primary/10 rounded-full"
-        animate={{ 
-          y: [0, -15, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/4 w-12 h-12 border border-green-400/40"
-        animate={{ 
-          y: [0, -25, 0],
-          rotate: [0, 180, 360]
-        }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 4
-        }}
-      />
+      {/* Floating geometric shapes with parallax */}
+      <Parallax speed={0.3}>
+        <motion.div
+          className="absolute top-20 left-10 w-20 h-20 border-2 border-primary/30 rotate-45"
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [45, 90, 45]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        />
+      </Parallax>
+      
+      <Parallax speed={-0.2}>
+        <motion.div
+          className="absolute bottom-32 right-16 w-16 h-16 bg-primary/10 rounded-full"
+          animate={{ 
+            y: [0, -15, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </Parallax>
+      
+      <MagneticScroll strength={0.5}>
+        <motion.div
+          className="absolute top-1/2 left-1/4 w-12 h-12 border border-green-400/40"
+          animate={{ 
+            y: [0, -25, 0],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4
+          }}
+        />
+      </MagneticScroll>
       
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
         <motion.div
@@ -87,14 +97,9 @@ export function HeroSection() {
             <span className="animate-neon-flicker">{ "Desenvolvedor Web" }</span>
           </motion.div>
           
-          <motion.p
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-          >
+          <TextReveal className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             Criando experiências digitais imersivas e interfaces modernas que conectam negócios ao futuro da tecnologia web.
-          </motion.p>
+          </TextReveal>
           
           <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center"

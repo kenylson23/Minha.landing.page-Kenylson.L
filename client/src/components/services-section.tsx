@@ -59,43 +59,44 @@ export function ServicesSection() {
         </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-500 group cursor-magnetic"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <motion.div
-                className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="text-primary">
-                  {service.icon}
-                </div>
-              </motion.div>
-              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors duration-300">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {service.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+          <Stagger staggerDelay={0.15}>
+            {services.map((service, index) => (
+              <ScrollScale key={index} scaleRange={[0.9, 1.05]}>
+                <ScrollVelocity factor={0.8}>
+                  <motion.div
+                    className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-primary/20 hover:border-primary/60 transition-all duration-500 group cursor-magnetic"
+                    whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    <motion.div
+                      className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <div className="text-primary">
+                        {service.icon}
+                      </div>
+                    </motion.div>
+                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </ScrollVelocity>
+              </ScrollScale>
+            ))}
+          </Stagger>
         </div>
       </div>
     </section>
