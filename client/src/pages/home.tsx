@@ -6,6 +6,7 @@ import { ServicesSection } from '@/components/services-section';
 import { PortfolioSection } from '@/components/portfolio-section';
 import { SkillsSection } from '@/components/skills-section';
 import { ContactSection } from '@/components/contact-section';
+import { EnhancedScrollSection } from '@/components/enhanced-scroll-section';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <PortfolioSection />
+        <EnhancedScrollSection />
         <SkillsSection />
         <ContactSection />
       </main>
