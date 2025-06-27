@@ -12,6 +12,7 @@ export default defineConfig({
     }
   },
   root: './client',
+  publicDir: './public',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
@@ -22,15 +23,20 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           animation: ['framer-motion'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-select', '@radix-ui/react-toast']
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-select', '@radix-ui/react-toast'],
+          query: ['@tanstack/react-query'],
+          forms: ['react-hook-form', '@hookform/resolvers', 'zod']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion']
+    include: ['react', 'react-dom', 'framer-motion', '@tanstack/react-query']
   },
   define: {
     'process.env.NODE_ENV': '"production"'
+  },
+  server: {
+    port: 3000
   }
 });
