@@ -56,7 +56,7 @@ export function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed w-5 h-5 bg-primary rounded-full pointer-events-none z-[9999] transition-transform duration-100 shadow-[0_0_10px_theme(colors.primary)]"
+      className="fixed w-5 h-5 bg-primary rounded-full pointer-events-none z-[9999] transition-transform duration-100 shadow-[0_0_10px_rgba(0,255,0,0.6)]"
       style={{ left: 0, top: 0 }}
     />
   );

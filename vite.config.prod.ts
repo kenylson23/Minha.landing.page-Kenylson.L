@@ -17,15 +17,29 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          animation: ['framer-motion'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-select', '@radix-ui/react-toast'],
-          query: ['@tanstack/react-query'],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod']
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion')) {
+              return 'animations';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui-components';
+            }
+            if (id.includes('@tanstack')) {
+              return 'query';
+            }
+            return 'vendor';
+          }
         }
       }
     }

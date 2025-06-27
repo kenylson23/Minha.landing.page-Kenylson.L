@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npx vite build --config vite.config.prod.ts"
+  command = "npx vite build --config vite.config.fast.ts"
 
 [build.environment]
   NODE_VERSION = "20"
