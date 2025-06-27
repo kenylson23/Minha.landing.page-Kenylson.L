@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { CustomCursor } from '@/components/ui/custom-cursor';
 import { Particles } from '@/components/ui/particles';
 import { Navigation } from '@/components/navigation';
@@ -7,7 +8,6 @@ import { PortfolioSection } from '@/components/portfolio-section';
 import { SkillsSection } from '@/components/skills-section';
 import { ContactSection } from '@/components/contact-section';
 import { EnhancedScrollSection } from '@/components/enhanced-scroll-section';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
