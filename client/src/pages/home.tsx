@@ -1,34 +1,32 @@
+import { Navigation } from "@/components/navigation";
+import { HeroSection } from "@/components/hero-section";
+import { ServicesSection } from "@/components/services-section";
+import { PortfolioSection } from "@/components/portfolio-section";
+import { SkillsSection } from "@/components/skills-section";
+import { ContactSection } from "@/components/contact-section";
+import { EnhancedScrollSection } from "@/components/enhanced-scroll-section";
+import { Particles } from "@/components/ui/particles";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { Toaster } from "@/components/ui/toaster";
+
 export default function Home() {
-  console.log('Home component is rendering');
-  
-  // Force re-render and debug
-  setTimeout(() => {
-    console.log('DOM content after render:', document.getElementById('root')?.innerHTML);
-  }, 1000);
-  
   return (
-    <div 
-      id="portfolio-content"
-      style={{ 
-        backgroundColor: '#000000', 
-        color: '#00ff00', 
-        minHeight: '100vh', 
-        padding: '40px',
-        position: 'relative',
-        zIndex: 999
-      }}
-    >
-      <h1 style={{ color: '#00ff00', fontSize: '4rem', marginBottom: '20px' }}>✅ KENYLSON LOURENÇO</h1>
-      <p style={{ fontSize: '2rem', color: '#ffffff' }}>🚀 Desenvolvedor Web</p>
-      <p style={{ fontSize: '1.5rem', marginTop: '20px', color: '#00ff00' }}>📞 Contato: +244 949639932</p>
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden scroll-smooth">
+      <CustomCursor />
+      <Particles />
       
-      <div style={{ marginTop: '40px', border: '2px solid #00ff00', padding: '20px' }}>
-        <h2 style={{ color: '#00ff00', fontSize: '2.5rem' }}>🎉 PORTFOLIO FUNCIONANDO!</h2>
-        <p style={{ fontSize: '1.3rem', color: '#ffffff' }}>Se você vê esta mensagem, o React carregou corretamente!</p>
-        <p style={{ fontSize: '1rem', color: '#888888', marginTop: '10px' }}>
-          Timestamp: {new Date().toLocaleString()}
-        </p>
-      </div>
+      <Navigation />
+      
+      <main className="relative z-10">
+        <HeroSection />
+        <ServicesSection />
+        <PortfolioSection />
+        <SkillsSection />
+        <EnhancedScrollSection />
+        <ContactSection />
+      </main>
+      
+      <Toaster />
     </div>
   );
 }
