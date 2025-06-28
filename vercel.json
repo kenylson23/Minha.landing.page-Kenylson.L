@@ -1,34 +1,5 @@
 {
-  "version": 2,
-  "name": "kenylson-portfolio",
-  "builds": [
-    {
-      "src": "client/index.html",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/server/index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/index.html"
-    }
-  ],
-  "buildCommand": "npm run build:static",
+  "buildCommand": "npx vite build --config vite.config.prod.ts",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
-  "framework": "vite",
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "installCommand": "npm install"
 }

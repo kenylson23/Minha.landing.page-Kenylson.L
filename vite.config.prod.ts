@@ -13,34 +13,29 @@ export default defineConfig({
   },
   root: './client',
   publicDir: '../public',
+  base: '/',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
     sourcemap: false,
     minify: 'esbuild',
     chunkSizeWarningLimit: 1000,
+    assetsDir: 'assets',
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'client/index.html')
+      },
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('framer-motion')) {
-              return 'animations';
-            }
-            if (id.includes('lucide-react')) {
-              return 'icons';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'ui-components';
-            }
-            if (id.includes('@tanstack')) {
-              return 'query';
-            }
-            return 'vendor';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+          query: ['@tanstack/react-query'],
+          ui: ['@radix-ui/react-slot', '@radix-ui/react-dialog', '@radix-ui/react-toast']
         }
+      },
+      external: [],
+      treeshake: {
+        moduleSideEffects: false
       }
     }
   },
@@ -49,8 +44,5 @@ export default defineConfig({
   },
   define: {
     'process.env.NODE_ENV': '"production"'
-  },
-  server: {
-    port: 3000
   }
 });
