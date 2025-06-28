@@ -1,5 +1,11 @@
 {
-  "buildCommand": "npx vite build --config vite.config.prod.ts",
+  "buildCommand": "vite build --config vite.config.vercel.ts",
   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

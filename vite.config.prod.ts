@@ -22,9 +22,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     assetsDir: 'assets',
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'client/index.html')
-      },
+      input: path.resolve(__dirname, 'client/index.html'),
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
@@ -32,10 +30,6 @@ export default defineConfig({
           query: ['@tanstack/react-query'],
           ui: ['@radix-ui/react-slot', '@radix-ui/react-dialog', '@radix-ui/react-toast']
         }
-      },
-      external: [],
-      treeshake: {
-        moduleSideEffects: false
       }
     }
   },
